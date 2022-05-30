@@ -1,4 +1,11 @@
-<?php require_once('core/init.php'); ?>
+<?php 
+
+    require_once('core/init.php'); 
+    $f_qry = "SELECT * FROM products WHERE pro_featured = 1";
+    $featured = $db->query($f_qry);
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -76,73 +83,23 @@
     <div class="col-md-8">
         <div class="row">
             <h2 class="text-center">Featured Products</h2>
+            
+            <?php while($products = mysqli_fetch_assoc($featured)): ?>
 
             <div class="col-md-3 border border-dark">
-                <h4>Levis Jeans</h4>
-                <img src="images/levis.jpg" alt="levis jeans" id="img-align"/>
-                <p class="list-price text-danger">List Price: <s>5000 PKR</s></p>
-                <p class="price">Our Price : <b>3000 PKR</b></p>
+                <h4><?= $products['pro_title'];?></h4>
+
+                <img src=" <?=$products['pro_image']; ?> " alt=" <?= $products['pro_title']; ?> " id="img-align"/>
+
+                <p class="list-price text-danger">List Price: <s> <?= $products['pro_list_price']; ?> </s></p>
+
+                <p class="price">Our Price : <b> <?= $products['pro_price']; ?> </b></p>
+
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-1">Details</button>
-            </div>
-
-            <div class="col-md-3 border border-dark">
-                <h4>Adidas Football</h4>
-                <img src="images/Football.jpg" alt="Adidas Football" id="img-align"/>
-                <p class="list-price text-danger">List Price: <s>2500 PKR</s></p>
-                <p class="price">Our Price : <b>2000 PKR</b></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-2">Details</button>
-            </div>
-
-            <div class="col-md-3 border border-dark">
-                <h4>Watch</h4>
-                <img src="images/Gucci_Watch.jpg" alt="watch" id="img-align"/>
-                <p class="list-price text-danger">List Price: <s>7000 PKR</s></p>
-                <p class="price">Our Price : <b>6000 PKR</b></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-3">Details</button>
-            </div>
-
-            <div class="col-md-3 border border-dark">
-                <h4>Polo Shirt</h4>
-                <img src="images/PoloShirt.png" alt="PoloShirt" id="img-aligns"/>
-                <p class="list-price text-danger">List Price: <s>3000 PKR</s></p>
-                <p class="price">Our Price : <b>2499 PKR</b></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-4">Details</button>
-            </div>
-
-            <div class="col-md-3 border border-dark">
-                <h4>Hoodie</h4>
-                <img src="images/Hoodies.png" alt="hoodie" id="img-align"/>
-                <p class="list-price text-danger">List Price: <s>4000 PKR</s></p>
-                <p class="price">Our Price : <b>3499 PKR</b></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-5">Details</button>
-            </div>
-
-            <div class="col-md-3 border border-dark">
-                <h4>Joggers</h4>
-                <img src="images/Joggers.jpg" alt="joggers" id="img-align"/>
-                <p class="list-price text-danger">List Price: <s>3000 PKR</s></p>
-                <p class="price">Our Price : <b>2499 PKR</b></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-6">Details</button>
-            </div>
-
-            <div class="col-md-3 border border-dark">
-                <h4>Nike Headband</h4>
-                <img src="images/HeadBand.jpg" alt="Nike Head band" id="img-align"/>
-                <p class="list-price text-danger">List Price: <s>1200 PKR</s></p>
-                <p class="price">Our Price : <b>899 PKR</b></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-7">Details</button>
-            </div>
-
-            <div class="col-md-3 border border-dark">
-                <h4>Ladies Purse</h4>
-                <img src="images/purse.png" alt="Ladies Purse" id="img-align"/>
-                <p class="list-price text-danger">List Price: <s>5500 PKR</s></p>
-                <p class="price">Our Price : <b>5000 PKR</b></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-8">Details</button>
+                <?php endwhile; ?>
             </div>
 
         </div>
-
 
 
         <!-- FOOTER -->
