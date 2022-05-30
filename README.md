@@ -1,2 +1,2 @@
 # EcomWeb
-## E-COM WEBSITE using PHP, HTML, CSS and BOOTSTRAP framework
+## E-COM WEBSITE using PHP, HTML, CSS, BOOTSTRAP framework and a little bit of JQuery!
