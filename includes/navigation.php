@@ -22,18 +22,23 @@
         ?>
 
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="whiteText" ><?php echo $parent['category']; ?> <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="whiteText" >
+                <?php echo $parent['category']; ?> 
+                <span class="caret"></span>
+            </a>
+
             <ul class="dropdown-menu text-white" role="menu">
                 <?php while($child = mysqli_fetch_assoc($c_qry)) :?>
                 <li>
                     <a href="#"><?php echo $child['category']?></a>
                 </li>
                 <?php endwhile; ?>
-
             </ul>
         </li>
+
         <?php endwhile; ?>
     </ul>
+    
 </div>
 
 </nav>
